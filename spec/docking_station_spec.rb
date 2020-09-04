@@ -30,6 +30,7 @@ describe DockingStation do
 
     describe '#release_bike' do
      it 'raises an error when there are no bikes available' do
+      10.times { subject.release_bike }
        expect { subject.release_bike }.to raise_error('No bikes available')
      end
    end
@@ -41,11 +42,14 @@ describe DockingStation do
     end
    end
 
-   describe '#release 10 bikes' do
-     it "releases 10 bikes" do
-     10.times {subject.release_bike}
-      expect { @@bikes }.to be_empty
+   describe '#docking bikes' do
+    it 'raises an error when full' do
+     20.times { subject.dock(Bike.new) }
+      expect { subject.dock Bike.new }.to raise_error 'Docking station full'
     end
+    
+    it 'raises an error when empy ' do
+     
   end
 
  end
